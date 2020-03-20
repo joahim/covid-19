@@ -5,13 +5,13 @@ LAST UPDATE: 2020-03-20
 This repository contains the COVID-19 data for Slovenia. The following metrics are available:
 
 * Date
-* New cases
-* Total cases
 * New tests
 * Total tests
+* New cases
+* Total cases
+* Currently hospitalized
 * New deaths
 * Total deaths
-* Total hospitalized
 
 The data is available in the following formats:
 
