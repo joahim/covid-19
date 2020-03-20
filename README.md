@@ -1,6 +1,6 @@
 # COVID-19 Data for Slovenia
 
-LAST UPDATE: 2020-03-19
+LAST UPDATE: 2020-03-20
 
 This repository contains the COVID-19 data for Slovenia. The following metrics are available:
 
