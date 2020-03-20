@@ -40,10 +40,15 @@ let render data metrics =
             renderNumber row.TotalDeaths
         ]
 
-    Html.table [
-        prop.className "data-table table is-bordered is-hoverable is-fullwidth"
+    Html.div [
+        prop.className "table-container"
         prop.children [
-            Html.thead [ header ]
-            Html.tbody (data |> List.map renderRow)
+            Html.table [
+                prop.className "data-table table is-bordered is-hoverable is-fullwidth"
+                prop.children [
+                    Html.thead [ header ]
+                    Html.tbody (data |> List.map renderRow)
+                ]
+            ]
         ]
     ]

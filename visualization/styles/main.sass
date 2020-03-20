@@ -1,55 +1,39 @@
 @import "bulma"
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap')
+
 body
     margin: $gap
+    font-size: $size-7
+
+h1
+    text-align: center
+    margin-bottom: $gap
+    font-family: 'Lato', sans-serif
+    font-size: 60px
+    color: $grey-darker
+
+    @include until($tablet)
+        font-size: 30px
 
 .metrics-selectors
     margin-top: $gap
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
 
 .metric-selector
     font-size: $size-7
+    margin: 0 $gap/6 $gap/3 $gap/6
 
-.metric-selector--NewTests.selected
-    background-color: red
-    border-color: red
+.metric-selector--selected
     color: $white
-
-.metric-selector--TotalTests.selected
-    background-color: red
-    border-color: red
-    color: $white
-
-.metric-selector--NewCases.selected
-    background-color: red
-    border-color: red
-    color: $white
-
-.metric-selector--TotalCases.selected
-    background-color: red
-    border-color: red
-    color: $white
-
-.metric-selector--Hospitalized.selected
-    background-color: red
-    border-color: red
-    color: $white
-
-.metric-selector--NewDeaths.selected
-    background-color: red
-    border-color: red
-    color: $white
-
-.metric-selector--TotalDeaths.selected
-    background-color: red
-    border-color: red
-    color: $white
-
-
+    &:hover
+        color: $white
 
 .data-table
     margin-top: $gap
 
     tbody
-        font-size: $size-7
         td
             width: 12.5%

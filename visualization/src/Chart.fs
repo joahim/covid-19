@@ -11,7 +11,7 @@ let formatDate (date : System.DateTime) =
 
 let renderChart (data : Data) (metrics : Metrics) =
 
-    let renderMetric color (dataKey : DataPoint -> string) =
+    let renderMetric color (dataKey : DataPoint -> int) =
         Recharts.line [
             line.monotone
             line.stroke color
@@ -27,31 +27,31 @@ let renderChart (data : Data) (metrics : Metrics) =
 
             if metrics.NewTests.Visible then
                 yield renderMetric metrics.NewTests.Color
-                    (fun (point : DataPoint) -> point.NewTests |> Option.map (fun p -> p.ToString()) |> Option.defaultValue "")
+                    (fun (point : DataPoint) -> point.NewTests |> Option.defaultValue 0)
 
             if metrics.TotalTests.Visible then
                 yield renderMetric metrics.TotalTests.Color
-                    (fun (point : DataPoint) -> point.TotalTests |> Option.map (fun p -> p.ToString()) |> Option.defaultValue "")
+                    (fun (point : DataPoint) -> point.TotalTests |> Option.defaultValue 0)
 
             if metrics.NewCases.Visible then
                 yield renderMetric metrics.NewCases.Color
-                    (fun (point : DataPoint) -> point.NewCases |> Option.map (fun p -> p.ToString()) |> Option.defaultValue "")
+                    (fun (point : DataPoint) -> point.NewCases |> Option.defaultValue 0)
 
             if metrics.TotalCases.Visible then
                 yield renderMetric metrics.TotalCases.Color
-                    (fun (point : DataPoint) -> point.TotalCases |> Option.map (fun p -> p.ToString()) |> Option.defaultValue "")
+                    (fun (point : DataPoint) -> point.TotalCases |> Option.defaultValue 0)
 
             if metrics.Hospitalized.Visible then
                 yield renderMetric metrics.Hospitalized.Color
-                    (fun (point : DataPoint) -> point.Hospitalized |> Option.map (fun p -> p.ToString()) |> Option.defaultValue "")
+                    (fun (point : DataPoint) -> point.Hospitalized |> Option.defaultValue 0)
 
             if metrics.NewDeaths.Visible then
                 yield renderMetric metrics.NewDeaths.Color
-                    (fun (point : DataPoint) -> point.NewDeaths |> Option.map (fun p -> p.ToString()) |> Option.defaultValue "")
+                    (fun (point : DataPoint) -> point.NewDeaths |> Option.defaultValue 0)
 
             if metrics.TotalDeaths.Visible then
                 yield renderMetric metrics.TotalDeaths.Color
-                    (fun (point : DataPoint) -> point.TotalDeaths |> Option.map (fun p -> p.ToString()) |> Option.defaultValue "")
+                    (fun (point : DataPoint) -> point.TotalDeaths |> Option.defaultValue 0)
         }
 
     Recharts.lineChart [
@@ -62,19 +62,24 @@ let renderChart (data : Data) (metrics : Metrics) =
 let renderChartContainer data metrics =
     Recharts.responsiveContainer [
         responsiveContainer.width (length.percent 100)
-        responsiveContainer.height 400
+        responsiveContainer.height 500
         responsiveContainer.chart (renderChart data metrics)
     ]
 
 let renderMetricSelector (metric : Metric) metricMsg dispatch =
+    let style =
+        if metric.Visible
+        then [ style.backgroundColor metric.Color ; style.borderColor metric.Color ]
+        else [ ]
     Html.div [
         prop.onClick (fun _ -> ToggleMetricVisible metricMsg |> dispatch)
-        prop.className [ true, "button metric-selector metric-selector--" + metric.Slug; metric.Visible, "selected" ]
+        prop.className [ true, "button metric-selector"; metric.Visible, "metric-selector--selected" ]
+        prop.style style
         prop.text metric.Label ]
 
 let renderMetricsSelectors metrics dispatch =
     Html.div [
-        prop.className "metrics-selectors buttons"
+        prop.className "metrics-selectors"
         prop.children [
             renderMetricSelector metrics.NewTests NewTests dispatch
             renderMetricSelector metrics.TotalTests TotalTests dispatch

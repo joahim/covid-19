@@ -40,13 +40,13 @@ let init() =
     let initialState =
         { Data = NotAsked
           Metrics =
-            { NewTests = { Color = "green" ; Visible = false ; Label = "New tests" ; Slug = "NewTests" }
-              TotalTests = { Color = "blue" ; Visible = true ; Label = "Total tests" ; Slug = "TotalTests" }
-              NewCases = { Color = "cyan" ; Visible = false ; Label = "New cases" ; Slug = "NewCases" }
-              TotalCases = { Color = "orange" ; Visible = true ; Label = "Total cases" ; Slug = "TotalCases" }
-              Hospitalized = { Color = "hotpink" ; Visible = true ; Label = "Hospitalized" ; Slug = "Hospitalized" }
-              NewDeaths = { Color = "magenta" ; Visible = false ; Label = "New deaths" ; Slug = "NewDeaths" }
-              TotalDeaths = { Color = "red" ; Visible = true ; Label = "Total deaths" ; Slug = "TotalDeaths" } } }
+            { NewTests = { Color = "#ffa600" ; Visible = true ; Label = "New tests" ; Slug = "NewTests" }
+              TotalTests = { Color = "#ff764a" ; Visible = false ; Label = "Total tests" ; Slug = "TotalTests" }
+              NewCases = { Color = "#ef5675" ; Visible = false ; Label = "New cases" ; Slug = "NewCases" }
+              TotalCases = { Color = "#bc5090" ; Visible = true ; Label = "Total cases" ; Slug = "TotalCases" }
+              Hospitalized = { Color = "#7a5195" ; Visible = true ; Label = "Hospitalized" ; Slug = "Hospitalized" }
+              NewDeaths = { Color = "#374c80" ; Visible = false ; Label = "New deaths" ; Slug = "NewDeaths" }
+              TotalDeaths = { Color = "#003f5c" ; Visible = false ; Label = "Total deaths" ; Slug = "TotalDeaths" } } }
 
     initialState, Cmd.OfAsync.result loadData
 
@@ -73,7 +73,7 @@ let render (state: State) (dispatch: Msg -> unit) =
     | Failure error -> str (error)
     | Success data ->
         fragment [ ] [
-            h1 [ ClassName "title is-1" ] [ str "COVID-19 in Slovenia" ]
+            h1 [ ] [ str "COVID-19 in Slovenia" ]
             Chart.render data state.Metrics dispatch
             DataTable.render data state.Metrics
         ]
