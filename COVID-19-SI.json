@@ -1,0 +1,162 @@
+[
+  {
+    "date": "2020-03-04",
+    "new_cases": "1",
+    "total_cases": "1",
+    "new_tests": "51",
+    "total_tests": "51",
+    "new_deaths": "0",
+    "total_deaths": "0",
+    "total_hospitalized": null
+  },
+  {
+    "date": "2020-03-05",
+    "new_cases": "5",
+    "total_cases": "6",
+    "new_tests": "103",
+    "total_tests": "154",
+    "new_deaths": "0",
+    "total_deaths": "0",
+    "total_hospitalized": null
+  },
+  {
+    "date": "2020-03-06",
+    "new_cases": "2",
+    "total_cases": "8",
+    "new_tests": "278",
+    "total_tests": "432",
+    "new_deaths": "0",
+    "total_deaths": "0",
+    "total_hospitalized": null
+  },
+  {
+    "date": "2020-03-07",
+    "new_cases": "4",
+    "total_cases": "12",
+    "new_tests": "177",
+    "total_tests": "609",
+    "new_deaths": "0",
+    "total_deaths": "0",
+    "total_hospitalized": null
+  },
+  {
+    "date": "2020-03-08",
+    "new_cases": "4",
+    "total_cases": "16",
+    "new_tests": "238",
+    "total_tests": "847",
+    "new_deaths": "0",
+    "total_deaths": "0",
+    "total_hospitalized": null
+  },
+  {
+    "date": "2020-03-09",
+    "new_cases": "9",
+    "total_cases": "25",
+    "new_tests": "367",
+    "total_tests": "1214",
+    "new_deaths": "0",
+    "total_deaths": "0",
+    "total_hospitalized": null
+  },
+  {
+    "date": "2020-03-10",
+    "new_cases": "9",
+    "total_cases": "34",
+    "new_tests": "542",
+    "total_tests": "1756",
+    "new_deaths": "0",
+    "total_deaths": "0",
+    "total_hospitalized": null
+  },
+  {
+    "date": "2020-03-11",
+    "new_cases": "23",
+    "total_cases": "57",
+    "new_tests": "749",
+    "total_tests": "2505",
+    "new_deaths": "0",
+    "total_deaths": "0",
+    "total_hospitalized": null
+  },
+  {
+    "date": "2020-03-12",
+    "new_cases": "39",
+    "total_cases": "96",
+    "new_tests": "1045",
+    "total_tests": "3550",
+    "new_deaths": "0",
+    "total_deaths": "0",
+    "total_hospitalized": null
+  },
+  {
+    "date": "2020-03-13",
+    "new_cases": "45",
+    "total_cases": "141",
+    "new_tests": "1197",
+    "total_tests": "4747",
+    "new_deaths": "0",
+    "total_deaths": "0",
+    "total_hospitalized": "5"
+  },
+  {
+    "date": "2020-03-14",
+    "new_cases": "40",
+    "total_cases": "181",
+    "new_tests": "916",
+    "total_tests": "5663",
+    "new_deaths": "1",
+    "total_deaths": "1",
+    "total_hospitalized": null
+  },
+  {
+    "date": "2020-03-15",
+    "new_cases": "38",
+    "total_cases": "219",
+    "new_tests": "590",
+    "total_tests": "6253",
+    "new_deaths": "0",
+    "total_deaths": "1",
+    "total_hospitalized": null
+  },
+  {
+    "date": "2020-03-16",
+    "new_cases": "34",
+    "total_cases": "253",
+    "new_tests": "858",
+    "total_tests": "7111",
+    "new_deaths": "0",
+    "total_deaths": "1",
+    "total_hospitalized": "25"
+  },
+  {
+    "date": "2020-03-17",
+    "new_cases": "20",
+    "total_cases": "273",
+    "new_tests": "1121",
+    "total_tests": "8232",
+    "new_deaths": "0",
+    "total_deaths": "1",
+    "total_hospitalized": "26"
+  },
+  {
+    "date": "2020-03-18",
+    "new_cases": "13",
+    "total_cases": "286",
+    "new_tests": "498",
+    "total_tests": "8730",
+    "new_deaths": "0",
+    "total_deaths": "1",
+    "total_hospitalized": "31"
+  },
+  {
+    "date": "2020-03-19",
+    "new_cases": "33",
+    "total_cases": "319",
+    "new_tests": "1130",
+    "total_tests": "9860",
+    "new_deaths": "0",
+    "total_deaths": "1",
+    "total_hospitalized": "35"
+  }
+]
