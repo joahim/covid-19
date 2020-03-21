@@ -1,26 +1,11 @@
 # COVID-19 Data for Slovenia
 
-LAST UPDATE: 2020-03-20
+This repository contains the code for visualizing the COVID-19 Data for Slovenia.
 
-This repository contains the COVID-19 data for Slovenia. The data is available in the following formats:
+The visualization is available at https://joahim.github.io/covid-19
 
-* [CSV](https://github.com/joahim/covid-19/blob/master/COVID-19-SI.csv)
-* [JSON](https://github.com/joahim/covid-19/blob/master/COVID-19-SI.json)
-* [Interactive visualization](https://joahim.github.io/covid-19)
+The data used in the visualization is sourced from the excellent resource https://tinyurl.com/slo-covid-19.
 
-The data contains the following metrics:
+For more in-depth information about the COVID-19 in Slovenia you may also want to check https://covid19.rtfm.si/.
 
-* Date
-* New tests
-* Total tests
-* New cases
-* Total cases
-* Currently hospitalized
-* New deaths
-* Total deaths
-
-The data is updated daily and collected from the following sources:
-
-* [UKC Maribor](https://twitter.com/UKCMaribor)
-* [UKC Ljubljana](https://twitter.com/ukclj)
-* [National Institute of Public Health](https://www.nijz.si/sl/dnevno-spremljanje-okuzb-s-sars-cov-2-covid-19)
+Note: until I discovered https://tinyurl.com/slo-covid-19 this project collected it's own. I do not plan to do that anymore.

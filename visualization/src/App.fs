@@ -1,46 +1,16 @@
 module App
 
 open Elmish
-open Fable.SimpleHttp
-open Fable.SimpleJson
 open Fable.React
 open Fable.React.Props
 
 open Types
 
-let dataUrl = "https://raw.githubusercontent.com/joahim/covid-19/master/COVID-19-SI.json"
-
-let loadData =
-    async {
-        let! (statusCode, response) = Http.get dataUrl
-        if statusCode <> 200 then
-            return DataLoaded (sprintf "Error loading data: %d" statusCode |> Failure)
-        else
-            try
-                let data =
-                    response
-                    |> SimpleJson.parse
-                    |> SimpleJson.mapKeys (function
-                        | "date" -> "Date"
-                        | "new_cases" -> "NewCases"
-                        | "total_cases" -> "TotalCases"
-                        | "new_tests" -> "NewTests"
-                        | "total_tests" -> "TotalTests"
-                        | "hospitalized" -> "Hospitalized"
-                        | "new_deaths" -> "NewDeaths"
-                        | "total_deaths" -> "TotalDeaths"
-                        | key -> key)
-                    |> Json.convertFromJsonAs<Data>
-                return DataLoaded (Success data)
-            with
-                | ex -> return DataLoaded (sprintf "Error parsing data: %s" ex.Message |> Failure)
-    }
-
 let init() =
     let initialState =
         { Data = NotAsked
           Metrics =
-            { NewTests = { Color = "#ffa600" ; Visible = true ; Label = "New tests" ; Slug = "NewTests" }
+            { NewTests = { Color = "#ffa600" ; Visible = false ; Label = "New tests" ; Slug = "NewTests" }
               TotalTests = { Color = "#ff764a" ; Visible = false ; Label = "Total tests" ; Slug = "TotalTests" }
               NewCases = { Color = "#ef5675" ; Visible = false ; Label = "New cases" ; Slug = "NewCases" }
               TotalCases = { Color = "#bc5090" ; Visible = true ; Label = "Total cases" ; Slug = "TotalCases" }
@@ -48,7 +18,7 @@ let init() =
               NewDeaths = { Color = "#374c80" ; Visible = false ; Label = "New deaths" ; Slug = "NewDeaths" }
               TotalDeaths = { Color = "#003f5c" ; Visible = false ; Label = "Total deaths" ; Slug = "TotalDeaths" } } }
 
-    initialState, Cmd.OfAsync.result loadData
+    initialState, Cmd.OfAsync.result SourceData.loadData
 
 let update (msg: Msg) (state: State) =
     match msg with

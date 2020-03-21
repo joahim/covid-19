@@ -4,6 +4,7 @@
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="Types.fs" />
+        <Compile Include="SourceData.fs" />
         <Compile Include="Chart.fs" />
         <Compile Include="DataTable.fs" />
         <Compile Include="App.fs" />
