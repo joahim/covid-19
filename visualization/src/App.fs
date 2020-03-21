@@ -72,8 +72,12 @@ let render (state: State) (dispatch: Msg -> unit) =
     | Loading -> str "Loading data..."
     | Failure error -> str (error)
     | Success data ->
-        fragment [ ] [
-            h1 [ ] [ str "COVID-19 in Slovenia" ]
-            Chart.render data state.Metrics dispatch
-            DataTable.render data state.Metrics
+        div [ Class "container" ] [
+            h1 [ ] [ str "COVID-19 / Slovenia" ]
+            section [ Class "content" ]
+                [ Chart.render data state.Metrics dispatch
+                  DataTable.render data state.Metrics ]
+            section [ Class "source" ]
+                [ str "Data and code used for this visualization is available at "
+                  a [ Href "https://github.com/joahim/covid-19" ] [ str "https://github.com/joahim/covid-19" ] ]
         ]

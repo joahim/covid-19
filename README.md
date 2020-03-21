@@ -2,7 +2,13 @@
 
 LAST UPDATE: 2020-03-20
 
-This repository contains the COVID-19 data for Slovenia. The following metrics are available:
+This repository contains the COVID-19 data for Slovenia. The data is available in the following formats:
+
+* [CSV](https://github.com/joahim/covid-19/blob/master/COVID-19-SI.csv)
+* [JSON](https://github.com/joahim/covid-19/blob/master/COVID-19-SI.json)
+* [Interactive visualization](https://joahim.github.io/covid-19)
+
+The data contains the following metrics:
 
 * Date
 * New tests
@@ -12,11 +18,6 @@ This repository contains the COVID-19 data for Slovenia. The following metrics a
 * Currently hospitalized
 * New deaths
 * Total deaths
-
-The data is available in the following formats:
-
-* [CSV](https://github.com/joahim/covid-19/blob/master/COVID-19-SI.csv)
-* [JSON](https://github.com/joahim/covid-19/blob/master/COVID-19-SI.json)
 
 The data is updated daily and collected from the following sources:
 
