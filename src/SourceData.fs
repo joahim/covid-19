@@ -66,12 +66,12 @@ type private TransferDataPoint =
 
     member this.ToDomain : DataPoint =
         { Date = System.DateTime(this.year, this.month, this.day)
-          NewTests = this.performedTests
+          Tests = this.performedTests
           TotalTests = this.performedTestsToDate
-          NewCases = this.positiveTests
+          Cases = this.positiveTests
           TotalCases = this.positiveTestsToDate
           Hospitalized = this.statePerTreatment.inHospital
-          NewDeaths = None
+          Deaths = None
           TotalDeaths = this.statePerTreatment.deceasedToDate }
 
 type private TransferData = TransferDataPoint list

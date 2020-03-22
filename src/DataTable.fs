@@ -8,12 +8,12 @@ open Types
 let render data metrics =
     let header =
       [ "Date"
-        "New tests"
+        "Tests"
         "Total tests"
-        "New cases"
+        "Cases"
         "Total cases"
         "Hospitalized"
-        "New deaths"
+        "Deaths"
         "Total deaths" ]
       |> List.map (fun label -> Html.th [ Html.text label ])
       |> Html.tr
@@ -31,12 +31,12 @@ let render data metrics =
     let renderRow (row : DataPoint) =
         Html.tr [
             Html.td [ sprintf "%d-%02d-%02d" row.Date.Date.Year row.Date.Date.Month row.Date.Date.Day |> Html.text ]
-            renderNumber row.NewTests
+            renderNumber row.Tests
             renderNumber row.TotalTests
-            renderNumber row.NewCases
+            renderNumber row.Cases
             renderNumber row.TotalCases
             renderNumber row.Hospitalized
-            renderNumber row.NewDeaths
+            renderNumber row.Deaths
             renderNumber row.TotalDeaths
         ]
 

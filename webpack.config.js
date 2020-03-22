@@ -50,7 +50,6 @@ console.log("Bundling for " + (isProduction ? "production" : "development") + ".
 // The HtmlWebpackPlugin allows us to use a template for the index.html page
 // and automatically injects <script> or <link> tags for generated bundles.
 var commonPlugins = [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
         filename: 'index.html',
         template: resolve(CONFIG.indexHtmlTemplate)
@@ -96,6 +95,7 @@ module.exports = {
     //      - HotModuleReplacementPlugin: Enables hot reloading when code changes without refreshing
     plugins: isProduction ?
         commonPlugins.concat([
+            new CleanWebpackPlugin(),
             new MiniCssExtractPlugin({ filename: 'style.css' }),
             new CopyWebpackPlugin([{ from: resolve(CONFIG.assetsDir) }]),
             new CopyPlugin([{ from: '.nojekyll', to: '' },]),

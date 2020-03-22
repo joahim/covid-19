@@ -8,12 +8,12 @@ type RemoteData<'data, 'error> =
 
 type DataPoint =
     { Date : System.DateTime
-      NewTests : int option
+      Tests : int option
       TotalTests : int option
-      NewCases : int option
+      Cases : int option
       TotalCases : int option
       Hospitalized : int option
-      NewDeaths : int option
+      Deaths : int option
       TotalDeaths : int option }
 
 type Data = DataPoint list
@@ -25,21 +25,21 @@ type Metric =
       Slug : string }
 
 type Metrics =
-    { NewTests : Metric
+    { Tests : Metric
       TotalTests : Metric
-      NewCases : Metric
+      Cases : Metric
       TotalCases : Metric
       Hospitalized : Metric
-      NewDeaths : Metric
+      Deaths : Metric
       TotalDeaths : Metric }
 
 type MetricMsg =
-    | NewTests
+    | Tests
     | TotalTests
-    | NewCases
+    | Cases
     | TotalCases
     | Hospitalized
-    | NewDeaths
+    | Deaths
     | TotalDeaths
 
 type State =

@@ -25,17 +25,17 @@ let renderChart (data : Data) (metrics : Metrics) =
             yield Recharts.tooltip [ ]
             yield Recharts.cartesianGrid [ cartesianGrid.strokeDasharray(3, 3) ]
 
-            if metrics.NewTests.Visible then
-                yield renderMetric metrics.NewTests.Color
-                    (fun (point : DataPoint) -> point.NewTests |> Option.defaultValue 0)
+            if metrics.Tests.Visible then
+                yield renderMetric metrics.Tests.Color
+                    (fun (point : DataPoint) -> point.Tests |> Option.defaultValue 0)
 
             if metrics.TotalTests.Visible then
                 yield renderMetric metrics.TotalTests.Color
                     (fun (point : DataPoint) -> point.TotalTests |> Option.defaultValue 0)
 
-            if metrics.NewCases.Visible then
-                yield renderMetric metrics.NewCases.Color
-                    (fun (point : DataPoint) -> point.NewCases |> Option.defaultValue 0)
+            if metrics.Cases.Visible then
+                yield renderMetric metrics.Cases.Color
+                    (fun (point : DataPoint) -> point.Cases |> Option.defaultValue 0)
 
             if metrics.TotalCases.Visible then
                 yield renderMetric metrics.TotalCases.Color
@@ -45,9 +45,9 @@ let renderChart (data : Data) (metrics : Metrics) =
                 yield renderMetric metrics.Hospitalized.Color
                     (fun (point : DataPoint) -> point.Hospitalized |> Option.defaultValue 0)
 
-            if metrics.NewDeaths.Visible then
-                yield renderMetric metrics.NewDeaths.Color
-                    (fun (point : DataPoint) -> point.NewDeaths |> Option.defaultValue 0)
+            if metrics.Deaths.Visible then
+                yield renderMetric metrics.Deaths.Color
+                    (fun (point : DataPoint) -> point.Deaths |> Option.defaultValue 0)
 
             if metrics.TotalDeaths.Visible then
                 yield renderMetric metrics.TotalDeaths.Color
@@ -81,12 +81,12 @@ let renderMetricsSelectors metrics dispatch =
     Html.div [
         prop.className "metrics-selectors"
         prop.children [
-            renderMetricSelector metrics.NewTests NewTests dispatch
+            renderMetricSelector metrics.Tests Tests dispatch
             renderMetricSelector metrics.TotalTests TotalTests dispatch
-            renderMetricSelector metrics.NewCases NewCases dispatch
+            renderMetricSelector metrics.Cases Cases dispatch
             renderMetricSelector metrics.TotalCases TotalCases dispatch
             renderMetricSelector metrics.Hospitalized Hospitalized dispatch
-            renderMetricSelector metrics.NewDeaths NewDeaths dispatch
+            renderMetricSelector metrics.Deaths Deaths dispatch
             renderMetricSelector metrics.TotalDeaths TotalDeaths dispatch ] ]
 
 let render data metrics dispatch =
