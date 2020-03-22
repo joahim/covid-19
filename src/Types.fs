@@ -13,6 +13,9 @@ type DataPoint =
       Cases : int option
       TotalCases : int option
       Hospitalized : int option
+      HospitalizedIcu : int option
+      Recovered : int option
+      TotalRecovered : int option
       Deaths : int option
       TotalDeaths : int option }
 
@@ -21,8 +24,7 @@ type Data = DataPoint list
 type Metric =
     { Color : string
       Visible : bool
-      Label : string
-      Slug : string }
+      Label : string }
 
 type Metrics =
     { Tests : Metric
@@ -30,6 +32,9 @@ type Metrics =
       Cases : Metric
       TotalCases : Metric
       Hospitalized : Metric
+      HospitalizedIcu : Metric
+      Recovered : Metric
+      TotalRecovered : Metric
       Deaths : Metric
       TotalDeaths : Metric }
 
@@ -39,6 +44,9 @@ type MetricMsg =
     | Cases
     | TotalCases
     | Hospitalized
+    | HospitalizedIcu
+    | Recovered
+    | TotalRecovered
     | Deaths
     | TotalDeaths
 

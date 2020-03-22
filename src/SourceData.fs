@@ -25,6 +25,7 @@ type private TransferDataPoint =
            critical : int option
            deceased : int option
            deceasedToDate : int option
+           outOfHospital : int option
            outOfHospitalToDate : int option |}
       statePerRegion :
         {| kp : int option
@@ -71,7 +72,10 @@ type private TransferDataPoint =
           Cases = this.positiveTests
           TotalCases = this.positiveTestsToDate
           Hospitalized = this.statePerTreatment.inHospital
-          Deaths = None
+          HospitalizedIcu = this.statePerTreatment.inICU
+          Recovered = this.statePerTreatment.outOfHospital
+          TotalRecovered = this.statePerTreatment.outOfHospitalToDate
+          Deaths = this.statePerTreatment.deceased
           TotalDeaths = this.statePerTreatment.deceasedToDate }
 
 type private TransferData = TransferDataPoint list

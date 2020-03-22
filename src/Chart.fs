@@ -11,10 +11,23 @@ let formatDate (date : System.DateTime) =
 
 let renderChart (data : Data) (metrics : Metrics) =
 
-    let renderMetric color (dataKey : DataPoint -> int) =
+    let renderLineLabel (input: ILabelProperties) =
+        Html.text [
+            prop.x(input.x)
+            prop.y(input.y)
+            prop.fill color.black
+            prop.textAnchor.middle
+            prop.dy(-10)
+            prop.fontSize 10
+            prop.text input.value
+        ]
+
+    let renderMetric (metric : Metric) (dataKey : DataPoint -> int) =
         Recharts.line [
+            line.name metric.Label
             line.monotone
-            line.stroke color
+            line.stroke metric.Color
+            line.label renderLineLabel
             line.dataKey dataKey
         ]
 
@@ -26,31 +39,43 @@ let renderChart (data : Data) (metrics : Metrics) =
             yield Recharts.cartesianGrid [ cartesianGrid.strokeDasharray(3, 3) ]
 
             if metrics.Tests.Visible then
-                yield renderMetric metrics.Tests.Color
+                yield renderMetric metrics.Tests
                     (fun (point : DataPoint) -> point.Tests |> Option.defaultValue 0)
 
             if metrics.TotalTests.Visible then
-                yield renderMetric metrics.TotalTests.Color
+                yield renderMetric metrics.TotalTests
                     (fun (point : DataPoint) -> point.TotalTests |> Option.defaultValue 0)
 
             if metrics.Cases.Visible then
-                yield renderMetric metrics.Cases.Color
+                yield renderMetric metrics.Cases
                     (fun (point : DataPoint) -> point.Cases |> Option.defaultValue 0)
 
             if metrics.TotalCases.Visible then
-                yield renderMetric metrics.TotalCases.Color
+                yield renderMetric metrics.TotalCases
                     (fun (point : DataPoint) -> point.TotalCases |> Option.defaultValue 0)
 
             if metrics.Hospitalized.Visible then
-                yield renderMetric metrics.Hospitalized.Color
+                yield renderMetric metrics.Hospitalized
                     (fun (point : DataPoint) -> point.Hospitalized |> Option.defaultValue 0)
 
+            if metrics.HospitalizedIcu.Visible then
+                yield renderMetric metrics.HospitalizedIcu
+                    (fun (point : DataPoint) -> point.HospitalizedIcu |> Option.defaultValue 0)
+
+            if metrics.Recovered.Visible then
+                yield renderMetric metrics.Recovered
+                    (fun (point : DataPoint) -> point.Recovered |> Option.defaultValue 0)
+
+            if metrics.TotalRecovered.Visible then
+                yield renderMetric metrics.TotalRecovered
+                    (fun (point : DataPoint) -> point.TotalRecovered |> Option.defaultValue 0)
+
             if metrics.Deaths.Visible then
-                yield renderMetric metrics.Deaths.Color
+                yield renderMetric metrics.Deaths
                     (fun (point : DataPoint) -> point.Deaths |> Option.defaultValue 0)
 
             if metrics.TotalDeaths.Visible then
-                yield renderMetric metrics.TotalDeaths.Color
+                yield renderMetric metrics.TotalDeaths
                     (fun (point : DataPoint) -> point.TotalDeaths |> Option.defaultValue 0)
         }
 
@@ -86,6 +111,9 @@ let renderMetricsSelectors metrics dispatch =
             renderMetricSelector metrics.Cases Cases dispatch
             renderMetricSelector metrics.TotalCases TotalCases dispatch
             renderMetricSelector metrics.Hospitalized Hospitalized dispatch
+            renderMetricSelector metrics.HospitalizedIcu HospitalizedIcu dispatch
+            renderMetricSelector metrics.Recovered Recovered dispatch
+            renderMetricSelector metrics.TotalRecovered TotalRecovered dispatch
             renderMetricSelector metrics.Deaths Deaths dispatch
             renderMetricSelector metrics.TotalDeaths TotalDeaths dispatch ] ]
 

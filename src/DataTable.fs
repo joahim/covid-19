@@ -13,6 +13,9 @@ let render data metrics =
         "Cases"
         "Total cases"
         "Hospitalized"
+        "Hospitalized in ICU"
+        "Recovered"
+        "Total recovered"
         "Deaths"
         "Total deaths" ]
       |> List.map (fun label -> Html.th [ Html.text label ])
@@ -36,6 +39,9 @@ let render data metrics =
             renderNumber row.Cases
             renderNumber row.TotalCases
             renderNumber row.Hospitalized
+            renderNumber row.HospitalizedIcu
+            renderNumber row.Recovered
+            renderNumber row.TotalRecovered
             renderNumber row.Deaths
             renderNumber row.TotalDeaths
         ]
