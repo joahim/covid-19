@@ -23,6 +23,7 @@ type private TransferDataPoint =
            needsO2 : int option
            inICU : int option
            critical : int option
+           deceased : int option
            deceasedToDate : int option
            outOfHospitalToDate : int option |}
       statePerRegion :
@@ -85,19 +86,11 @@ let loadData =
                 let transferData =
                     response
                     |> SimpleJson.parse
-                    |> SimpleJson.mapKeys (function
-                        // | "fromKEy" -> "toKey"
-                        | key -> key)
                     |> Json.convertFromJsonAs<TransferData>
 
                 let data =
                     transferData
                     |> List.map (fun transferDataPoint -> transferDataPoint.ToDomain)
-                    |> List.mapFold (fun (previousTotalDeaths : int) (dataPoint : DataPoint) ->
-                        match dataPoint.TotalDeaths with
-                        | None -> dataPoint, previousTotalDeaths
-                        | Some totalDeaths -> { dataPoint with NewDeaths = Some (totalDeaths - previousTotalDeaths) }, totalDeaths) 0
-                    |> fst
 
                 return DataLoaded (Success data)
             with

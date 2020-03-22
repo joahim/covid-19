@@ -11,6 +11,8 @@ var webpack = require("webpack");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 var CONFIG = {
     // The tags to include the generated JS and CSS will be automatically injected in the HTML template
@@ -18,7 +20,7 @@ var CONFIG = {
     indexHtmlTemplate: "./src/index.html",
     fsharpEntry: "./src/App.fsproj",
     cssEntry: "./styles/main.sass",
-    outputDir: "./deploy",
+    outputDir: "./docs",
     assetsDir: "./public",
     devServerPort: 8080,
     // When using webpack-dev-server, you may need to redirect some calls
@@ -48,6 +50,7 @@ console.log("Bundling for " + (isProduction ? "production" : "development") + ".
 // The HtmlWebpackPlugin allows us to use a template for the index.html page
 // and automatically injects <script> or <link> tags for generated bundles.
 var commonPlugins = [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
         filename: 'index.html',
         template: resolve(CONFIG.indexHtmlTemplate)
@@ -95,6 +98,7 @@ module.exports = {
         commonPlugins.concat([
             new MiniCssExtractPlugin({ filename: 'style.css' }),
             new CopyWebpackPlugin([{ from: resolve(CONFIG.assetsDir) }]),
+            new CopyPlugin([{ from: '.nojekyll', to: '' },]),
         ])
         : commonPlugins.concat([
             new webpack.HotModuleReplacementPlugin(),

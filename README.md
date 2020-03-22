@@ -39,4 +39,4 @@ To build the application and make ready for production:
 ```
 npm run build
 ```
-This command builds the application and puts the generated files into the `deploy` directory (can be overwritten in webpack.config.js).
+This command builds the application and puts the generated files into the `docs` directory (can be overwritten in webpack.config.js).
