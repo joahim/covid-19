@@ -5,7 +5,7 @@ open Fable.SimpleJson
 
 open Types
 
-let private dataUrl = "https://raw.githubusercontent.com/joahim/covid-19/master/COVID-19-SI-temp.json"
+let private dataUrl = "https://covid19.rthand.com/api/data"
 
 type private TransferDataPoint =
     { dayFromStart : int
@@ -40,27 +40,27 @@ type private TransferDataPoint =
            kr : int option
            lj : int option
            mb : int option |}
-      statePerAgeToDate :
-        {| age0to15 :
-            {| allToDate : int option
-               femaleToDate : int option
-               maleToDate : int option |}
-           age16to29 :
-            {| allToDate : int option
-               femaleToDate : int option
-               maleToDate : int option |}
-           age30to49 :
-            {| allToDate : int option
-               femaleToDate : int option
-               maleToDate : int option |}
-           age50to59 :
-            {| allToDate : int option
-               femaleToDate : int option
-               maleToDate : int option |}
-           ageAbove60 :
-            {| allToDate : int option
-               femaleToDate : int option
-               maleToDate : int option |} |}
+    //   statePerAgeToDate :
+    //     {| age0to15 :
+    //         {| allToDate : int option
+    //            femaleToDate : int option
+    //            maleToDate : int option |}
+    //        age16to29 :
+    //         {| allToDate : int option
+    //            femaleToDate : int option
+    //            maleToDate : int option |}
+    //        age30to49 :
+    //         {| allToDate : int option
+    //            femaleToDate : int option
+    //            maleToDate : int option |}
+    //        age50to59 :
+    //         {| allToDate : int option
+    //            femaleToDate : int option
+    //            maleToDate : int option |}
+    //        ageAbove60 :
+    //         {| allToDate : int option
+    //            femaleToDate : int option
+    //            maleToDate : int option |} |}
     }
 
     member this.ToDomain : DataPoint =
@@ -86,11 +86,7 @@ let loadData =
                     response
                     |> SimpleJson.parse
                     |> SimpleJson.mapKeys (function
-                        | "0_15" -> "age0to15"
-                        | "16_29" -> "age16to29"
-                        | "30-49" -> "age30to49"
-                        | "50-59" -> "age50to59"
-                        | "60+" -> "ageAbove60"
+                        // | "fromKEy" -> "toKey"
                         | key -> key)
                     |> Json.convertFromJsonAs<TransferData>
 

@@ -48,6 +48,6 @@ let render (state: State) (dispatch: Msg -> unit) =
                 [ Chart.render data state.Metrics dispatch
                   DataTable.render data state.Metrics ]
             section [ Class "source" ]
-                [ str "Data and code used for this visualization are available at "
+                [ str "Code and pointers to the data used for this visualization are available at "
                   a [ Href "https://github.com/joahim/covid-19" ] [ str "https://github.com/joahim/covid-19" ] ]
         ]
