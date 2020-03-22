@@ -16,8 +16,8 @@ let init() =
               TotalCases =          { Color = "#d26d60" ; Visible = true  ; Label = "Total cases" }
               Hospitalized =        { Color = "#c35a80" ; Visible = true  ; Label = "Hospitalized" }
               HospitalizedIcu =     { Color = "#a74e8a" ; Visible = false ; Label = "Hospitalized in ICU" }
-              Recovered =       { Color = "#7d4a7f" ; Visible = false ; Label = "Recovered" }
-              TotalRecovered =  { Color = "#544773" ; Visible = false ; Label = "Total recovered"}
+              OutOfHospital =       { Color = "#7d4a7f" ; Visible = false ; Label = "Out of hospital" }
+              TotalOutOfHospital =  { Color = "#544773" ; Visible = false ; Label = "Total out of hospital"}
               Deaths =              { Color = "#2a4368" ; Visible = false ; Label = "Deaths" }
               TotalDeaths =         { Color = "#003f5c" ; Visible = false ; Label = "Total deaths" } } }
 
@@ -36,8 +36,8 @@ let update (msg: Msg) (state: State) =
             | TotalCases -> { state.Metrics with TotalCases = { state.Metrics.TotalCases with Visible = not state.Metrics.TotalCases.Visible } }
             | Hospitalized -> { state.Metrics with Hospitalized = { state.Metrics.Hospitalized with Visible = not state.Metrics.Hospitalized.Visible } }
             | HospitalizedIcu -> { state.Metrics with HospitalizedIcu = { state.Metrics.HospitalizedIcu with Visible = not state.Metrics.HospitalizedIcu.Visible } }
-            | Recovered -> { state.Metrics with Recovered = { state.Metrics.Recovered with Visible = not state.Metrics.Recovered.Visible } }
-            | TotalRecovered -> { state.Metrics with TotalRecovered = { state.Metrics.TotalRecovered with Visible = not state.Metrics.TotalRecovered.Visible } }
+            | OutOfHospital -> { state.Metrics with OutOfHospital = { state.Metrics.OutOfHospital with Visible = not state.Metrics.OutOfHospital.Visible } }
+            | TotalOutOfHospital -> { state.Metrics with TotalOutOfHospital = { state.Metrics.TotalOutOfHospital with Visible = not state.Metrics.TotalOutOfHospital.Visible } }
             | Deaths -> { state.Metrics with Deaths = { state.Metrics.Deaths with Visible = not state.Metrics.Deaths.Visible } }
             | TotalDeaths -> { state.Metrics with TotalDeaths = { state.Metrics.TotalDeaths with Visible = not state.Metrics.TotalDeaths.Visible } }
         { state with Metrics = newMetrics }, Cmd.none

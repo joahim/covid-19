@@ -73,8 +73,8 @@ type private TransferDataPoint =
           TotalCases = this.positiveTestsToDate
           Hospitalized = this.statePerTreatment.inHospital
           HospitalizedIcu = this.statePerTreatment.inICU
-          Recovered = this.statePerTreatment.outOfHospital
-          TotalRecovered = this.statePerTreatment.outOfHospitalToDate
+          OutOfHospital = this.statePerTreatment.outOfHospital
+          TotalOutOfHospital = this.statePerTreatment.outOfHospitalToDate
           Deaths = this.statePerTreatment.deceased
           TotalDeaths = this.statePerTreatment.deceasedToDate }
 

@@ -62,13 +62,13 @@ let renderChart (data : Data) (metrics : Metrics) =
                 yield renderMetric metrics.HospitalizedIcu
                     (fun (point : DataPoint) -> point.HospitalizedIcu |> Option.defaultValue 0)
 
-            if metrics.Recovered.Visible then
-                yield renderMetric metrics.Recovered
-                    (fun (point : DataPoint) -> point.Recovered |> Option.defaultValue 0)
+            if metrics.OutOfHospital.Visible then
+                yield renderMetric metrics.OutOfHospital
+                    (fun (point : DataPoint) -> point.OutOfHospital |> Option.defaultValue 0)
 
-            if metrics.TotalRecovered.Visible then
-                yield renderMetric metrics.TotalRecovered
-                    (fun (point : DataPoint) -> point.TotalRecovered |> Option.defaultValue 0)
+            if metrics.TotalOutOfHospital.Visible then
+                yield renderMetric metrics.TotalOutOfHospital
+                    (fun (point : DataPoint) -> point.TotalOutOfHospital |> Option.defaultValue 0)
 
             if metrics.Deaths.Visible then
                 yield renderMetric metrics.Deaths
@@ -112,8 +112,8 @@ let renderMetricsSelectors metrics dispatch =
             renderMetricSelector metrics.TotalCases TotalCases dispatch
             renderMetricSelector metrics.Hospitalized Hospitalized dispatch
             renderMetricSelector metrics.HospitalizedIcu HospitalizedIcu dispatch
-            renderMetricSelector metrics.Recovered Recovered dispatch
-            renderMetricSelector metrics.TotalRecovered TotalRecovered dispatch
+            renderMetricSelector metrics.OutOfHospital OutOfHospital dispatch
+            renderMetricSelector metrics.TotalOutOfHospital TotalOutOfHospital dispatch
             renderMetricSelector metrics.Deaths Deaths dispatch
             renderMetricSelector metrics.TotalDeaths TotalDeaths dispatch ] ]
 

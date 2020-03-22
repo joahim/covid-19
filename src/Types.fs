@@ -14,8 +14,8 @@ type DataPoint =
       TotalCases : int option
       Hospitalized : int option
       HospitalizedIcu : int option
-      Recovered : int option
-      TotalRecovered : int option
+      OutOfHospital : int option
+      TotalOutOfHospital : int option
       Deaths : int option
       TotalDeaths : int option }
 
@@ -33,8 +33,8 @@ type Metrics =
       TotalCases : Metric
       Hospitalized : Metric
       HospitalizedIcu : Metric
-      Recovered : Metric
-      TotalRecovered : Metric
+      OutOfHospital : Metric
+      TotalOutOfHospital : Metric
       Deaths : Metric
       TotalDeaths : Metric }
 
@@ -45,8 +45,8 @@ type MetricMsg =
     | TotalCases
     | Hospitalized
     | HospitalizedIcu
-    | Recovered
-    | TotalRecovered
+    | OutOfHospital
+    | TotalOutOfHospital
     | Deaths
     | TotalDeaths
 
